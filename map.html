@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>GSM Towers</title>
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2.x&key=ABQIAAAA4W2K7NSAr8XzNFosaZpycxRwkLm2Lt1eP5mxLhKTrkdXLJr_pxQQHd6deRx8qwVbf3O4aRNsK5A7HQ"></script>
+<script type="text/javascript" language="javascript" src="CollectedCellIdsPerLatLng.dat.json"></script>
+<script type="text/javascript" language="javascript" src="raphael-min.js"></script>
+<script type="text/javascript" language="javascript" src="cartographer.min.0.2.js"></script>
+<script language="javascript">
+
+var cartographer; 
+
+function load() {
+  if( GBrowserIsCompatible() ) {
+    var map = new GMap2(document.getElementById("map"));
+    map.setCenter(new GLatLng(18, 0), 2);
+    map.setMapType(G_PHYSICAL_MAP);
+    cartographer = Cartographer( map, { colorize:"#fff" } );
+	cartographer.cluster( celltowers, { gridSize:20.0, color:"#f0f", colorHover:"#ff0",stroke:"#fff" } );
+  }
+}
+
+</script>
+</head>
+<body onload="load()" onunload="GUnload()">
+	<div id="map" style="height:100%"></div>
+</body>
+
+</html>
